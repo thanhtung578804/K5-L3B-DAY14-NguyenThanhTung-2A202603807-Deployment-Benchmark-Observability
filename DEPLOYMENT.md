@@ -90,5 +90,6 @@ Cấu hình trên Dashboard nền tảng (Railway / Render Dashboard Variables):
 
 ## Screenshots
 - [Deployment dashboard](screenshots/dashboard.png)
-- [Service running](screenshots/running.png)
-- [Test results](screenshots/test.png)
+- [Service running & live logs](screenshots/running.png)
+- [Test results (health & readiness)](screenshots/test.png)
+- [Test results (authentication 401)](screenshots/test_auth.png)

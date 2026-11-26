@@ -77,10 +77,11 @@ Dữ liệu đo đạc thực tế từ `reports/eval_v1.json`, `reports/eval_v2
 ## 4. Observability stack (production)
 
 ### 4.1 Screenshots
-- [x] Dashboard Grafana khi đang có tải: [screenshots/grafana-dashboard.png](screenshots/grafana-dashboard.png)
-- [x] Một trace chậm trong Jaeger: [screenshots/jaeger-slow-trace.png](screenshots/jaeger-slow-trace.png)
-- [x] Một trace lỗi trong Jaeger: [screenshots/jaeger-error-trace.png](screenshots/jaeger-error-trace.png)
-- [x] Trang Alerts của Prometheus đang firing: [screenshots/prometheus-alert-firing.png](screenshots/prometheus-alert-firing.png)
+*(Thực hiện và chụp lại khi chạy stack full observability tại local `production/`)*
+- [ ] Dashboard Grafana khi đang có tải
+- [ ] Một trace chậm trong Jaeger
+- [ ] Một trace lỗi trong Jaeger
+- [ ] Trang Alerts của Prometheus đang firing
 
 ### 4.2 Thí nghiệm "phá hệ thống"
 
