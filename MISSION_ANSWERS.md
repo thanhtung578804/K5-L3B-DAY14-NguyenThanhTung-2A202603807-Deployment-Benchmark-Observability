@@ -165,7 +165,8 @@
      - Tự động đồng bộ khi push code lên GitHub.
      - Hỗ trợ quản lý secrets an toàn: dùng `generateValue: true` để Render tự sinh key ngẫu nhiên hoặc `sync: false` để cấu hình thủ công trên Dashboard, tuyệt đối không hardcode secret trong file git.
 2. **Public Deployment URL & Deliverables:**
-   - **URL:** `https://k5-l3b-agent-production.up.railway.app`
+   - **URL:** `https://production-agent-kvkk.onrender.com` (Đã deploy live thành công trên Render)
+   - **Platform:** Render Web Service (Docker Runtime)
    - **Screenshots:** Đã liên kết trong [DEPLOYMENT.md](file:///c:/Users/tungh/K5-L3B-DAY14-NguyenThanhTung-2A202603807-Deployment-Benchmark-Observability/DEPLOYMENT.md) tới [dashboard.png](file:///c:/Users/tungh/K5-L3B-DAY14-NguyenThanhTung-2A202603807-Deployment-Benchmark-Observability/screenshots/dashboard.png), [running.png](file:///c:/Users/tungh/K5-L3B-DAY14-NguyenThanhTung-2A202603807-Deployment-Benchmark-Observability/screenshots/running.png), và [test.png](file:///c:/Users/tungh/K5-L3B-DAY14-NguyenThanhTung-2A202603807-Deployment-Benchmark-Observability/screenshots/test.png).
 
 ---
