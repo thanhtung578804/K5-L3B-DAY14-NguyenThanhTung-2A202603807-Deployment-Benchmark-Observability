@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: production-agent
+    runtime: docker
+    dockerfilePath: ./06-lab-complete/Dockerfile
+    dockerContext: ./06-lab-complete
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: ENVIRONMENT
+        value: production
+      - key: AGENT_API_KEY
+        generateValue: true
+      - key: REDIS_URL
+        sync: false
+      - key: RATE_LIMIT_PER_MINUTE
+        value: 10
+      - key: DAILY_BUDGET_USD
+        value: 10.0
