@@ -1,14 +1,36 @@
-"""
-Rate limiting (tiêu chí 7).
-
-Yêu cầu:
-  • Mỗi API key tối đa RATE_LIMIT_PER_MINUTE request trong 60 giây (sliding window)
-  • Vượt giới hạn → HTTP 429, nên kèm header Retry-After
-  • State lưu trong Redis để mọi worker / instance dùng chung và vẫn còn sau khi
-    restart agent (script chấm sẽ restart agent để kiểm tra)
-"""
+import time
+from fastapi import HTTPException
+from app.config import settings
+from app.redis_client import get_redis_client
 
 
 def check_rate_limit(key: str) -> None:
-    # TODO: gợi ý dùng Redis sorted set: ZREMRANGEBYSCORE → ZCARD → ZADD → EXPIRE
-    raise NotImplementedError("TODO: check_rate_limit")
+    client = get_redis_client()
+    if not client:
+        return
+
+    now = time.time()
+    window = 60
+    redis_key = f"rate_limit:{key}"
+
+    try:
+        pipe = client.pipeline()
+        pipe.zremrangebyscore(redis_key, 0, now - window)
+        pipe.zcard(redis_key)
+        pipe.zadd(redis_key, {str(now): now})
+        pipe.expire(redis_key, window + 10)
+        results = pipe.execute()
+
+        current_requests = results[1]
+        limit = settings.rate_limit_per_minute
+
+        if current_requests >= limit:
+            raise HTTPException(
+                status_code=429,
+                detail="Rate limit exceeded",
+                headers={"Retry-After": str(window)},
+            )
+    except HTTPException:
+        raise
+    except Exception:
+        pass
